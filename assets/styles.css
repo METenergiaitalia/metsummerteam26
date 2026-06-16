@@ -1,0 +1,227 @@
+/* ============================================================
+   SummerTeam — MET Italia 2026
+   Mood: outdoor / montagna, energico. Verdi naturali + caldi estivi.
+   ============================================================ */
+
+:root {
+  /* MET brand — petrol teal → lime green + giallo */
+  --forest:   oklch(0.33 0.045 222);   /* deep petrol navy (dark sections) */
+  --pine:     oklch(0.48 0.078 216);   /* MET teal */
+  --green:    oklch(0.66 0.135 150);   /* MET green */
+  --moss:     oklch(0.80 0.155 130);   /* lime */
+  --sage:     oklch(0.90 0.05 175);
+
+  /* Brand accents */
+  --sun:      oklch(0.85 0.155 90);    /* MET yellow */
+  --terra:    oklch(0.56 0.088 212);   /* MET teal (CTA) */
+  --clay:     oklch(0.70 0.12 130);
+
+  /* Paper / ink */
+  --cream:    oklch(0.975 0.008 220);
+  --paper:    oklch(0.996 0.003 220);
+  --sand:     oklch(0.945 0.014 215);
+  --ink:      oklch(0.30 0.035 222);   /* navy-teal text */
+  --ink-soft: oklch(0.48 0.028 220);
+  --line:     oklch(0.88 0.015 210);
+
+  /* Roles */
+  --bg:       var(--cream);
+  --accent:   var(--terra);            /* MET teal CTA */
+  --accent-2: var(--sun);
+
+  --radius:   18px;
+  --radius-sm: 11px;
+  --maxw:     1200px;
+  --shadow:   0 1px 2px oklch(0.3 0.03 220 / 0.05), 0 12px 34px oklch(0.3 0.04 220 / 0.10);
+  --shadow-sm: 0 1px 2px oklch(0.3 0.03 220 / 0.06), 0 4px 14px oklch(0.3 0.04 220 / 0.08);
+
+  --font-display: 'Poppins', system-ui, sans-serif;
+  --font-body: 'Mulish', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+img, video, iframe { max-width: 100%; }
+
+html { scroll-behavior: smooth; overflow-x: clip; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-size: 17px;
+  line-height: 1.6;
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+a { color: inherit; }
+
+::selection { background: var(--moss); color: var(--forest); }
+
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 clamp(18px, 5vw, 28px);
+}
+
+.section {
+  padding: clamp(64px, 9vw, 130px) 0;
+  position: relative;
+}
+
+/* eyebrow / kicker */
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.kicker::before {
+  content: "";
+  width: 24px; height: 2px;
+  background: var(--accent);
+  display: inline-block;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  margin: 18px 0 0;
+  max-width: 16ch;
+  text-wrap: balance;
+}
+.section-intro {
+  margin: 20px 0 0;
+  max-width: 56ch;
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.4vw, 1.18rem);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.98rem;
+  letter-spacing: -0.01em;
+  border: none;
+  border-radius: 100px;
+  padding: 14px 26px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform .16s ease, box-shadow .16s ease, background .16s ease, color .16s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn:active { transform: translateY(1px) scale(0.99); }
+.btn-primary {
+  background: var(--forest);
+  color: var(--cream);
+}
+.btn-primary:hover { background: var(--pine); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+.btn-accent {
+  background: var(--accent);
+  color: oklch(0.99 0.01 80);
+}
+.btn-accent:hover { filter: brightness(1.04); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+.btn-ghost {
+  background: transparent;
+  color: var(--forest);
+  border: 1.5px solid var(--line);
+}
+.btn-ghost:hover { border-color: var(--forest); background: oklch(0.97 0.02 140); }
+.btn-sm { padding: 10px 18px; font-size: 0.88rem; }
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---------- Image placeholder (striped) ---------- */
+.ph {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background:
+    repeating-linear-gradient(135deg,
+      oklch(0.9 0.03 145) 0 11px,
+      oklch(0.87 0.035 145) 11px 22px);
+  display: flex;
+  align-items: flex-end;
+  color: var(--pine);
+  isolation: isolate;
+}
+.ph::after {
+  content: attr(data-label);
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--paper);
+  color: var(--ink-soft);
+  padding: 5px 10px;
+  margin: 12px;
+  border-radius: 7px;
+  box-shadow: var(--shadow-sm);
+}
+.ph.ph-warm {
+  background:
+    repeating-linear-gradient(135deg,
+      oklch(0.9 0.06 175) 0 11px,
+      oklch(0.87 0.07 180) 11px 22px);
+}
+
+/* fillable image slot fills its container */
+.ph-slot { width: 100%; display: block; box-shadow: var(--shadow-sm); border-radius: var(--radius); }
+
+/* chips */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.86rem;
+  padding: 7px 14px;
+  border-radius: 100px;
+  background: oklch(0.97 0.02 140);
+  border: 1px solid var(--line);
+  color: var(--pine);
+}
+
+/* tiny helpers */
+.muted { color: var(--ink-soft); }
+.center { text-align: center; }
+
+/* reveal on scroll */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* su schermi piccolissimi i pulsanti vanno a capo invece di tagliarsi */
+@media (max-width: 420px) {
+  .btn { white-space: normal; text-align: center; }
+}
