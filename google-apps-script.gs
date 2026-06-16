@@ -9,7 +9,7 @@
 
 // ❶ Scegli una parola segreta (lettere/numeri, niente spazi).
 //    DEVE essere IDENTICA a quella che metti in config.js (campo "token").
-const TOKEN = 'CAMBIA-QUESTA-PAROLA-SEGRETA';
+const TOKEN = 'summerteam';
 
 // ❷ Email che ricevono la notifica a ogni nuovo invio.
 //    (lascia l'array vuoto [] per disattivare le notifiche)
