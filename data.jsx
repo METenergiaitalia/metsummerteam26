@@ -110,7 +110,7 @@ function Head({ kicker, title, intro, align = 'left', titleStyle }) {
     <div style={{ textAlign: align, maxWidth: align === 'center' ? 720 : 'none', margin: align === 'center' ? '0 auto' : 0 }}>
       <span className="kicker">{kicker}</span>
       <h2 className="section-title" style={{ marginLeft: align === 'center' ? 'auto' : 0, marginRight: align === 'center' ? 'auto' : 0, ...titleStyle, fontWeight: "700" }}>{title}</h2>
-      {intro && <p className="section-intro" style={{ marginLeft: align === 'center' ? 'auto' : 0, marginRight: align === 'center' ? 'auto' : 0, fontWeight: "500", width: "634px", height: "221px" }}>{intro}</p>}
+      {intro && <p className="section-intro" style={{ marginLeft: align === 'center' ? 'auto' : 0, marginRight: align === 'center' ? 'auto' : 0, fontWeight: "500" }}>{intro}</p>}
     </div>);
 
 }
