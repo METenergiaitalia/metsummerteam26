@@ -1,0 +1,116 @@
+============================================================
+SUMMERTEAM 2026 — MET ITALIA
+Pacchetto per la pubblicazione su sottodominio
+============================================================
+
+Sottodominio desiderato:  metsummerteam26  (es. metsummerteam26.tuodominio.it)
+
+Tipo di sito: pagine statiche (HTML/CSS/JS). Nessun database, nessun
+linguaggio server (PHP/Node) richiesto per la visualizzazione. Si può
+caricare così com'è su un qualsiasi hosting/spazio web.
+
+
+------------------------------------------------------------
+1) COSA CONTIENE IL PACCHETTO
+------------------------------------------------------------
+index.html ............... Pagina principale (la landing del SummerTeam)
+organizzatori.html ....... Area riservata organizzatori (login)
+config.js ................ Collegamento al backend Google (DA COMPILARE, vedi punto 4)
+gallery.json ............. Archivio delle foto delle gallerie (NON rinominare)
+google-apps-script.gs .... Codice da incollare in Google Apps Script (vedi punto 4)
+ISTRUZIONI GOOGLE.txt .... Guida passo-passo per attivare la raccolta dati Google
+/assets .................. Immagini e video del sito (logo, hero, foto, hotel.mp4)
+*.css .................... Fogli di stile
+*.jsx / *.js ............. Codice della pagina
+
+Nota: i file "google-apps-script.gs" e "ISTRUZIONI GOOGLE.txt" servono solo
+per la configurazione (punto 4) e non è obbligatorio caricarli online.
+Tutti gli altri file devono restare NELLA STESSA CARTELLA, mantenendo i
+nomi e la struttura così come sono (compresa la sottocartella /assets).
+
+
+------------------------------------------------------------
+2) PASSAGGI PER LA PUBBLICAZIONE
+------------------------------------------------------------
+1. Creare il sottodominio "metsummerteam26" dal pannello di hosting
+   (cPanel/Plesk o equivalente) e individuarne la cartella radice
+   (document root), es. /public_html/metsummerteam26/
+
+2. Caricare TUTTO il contenuto di questa cartella (compresa /assets e il
+   file gallery.json) nella cartella radice del sottodominio, via FTP o
+   File Manager. NON creare una sottocartella in più: index.html deve
+   trovarsi direttamente nella radice del sottodominio.
+
+3. Verificare che "index.html" sia impostato come documento di default
+   (di norma lo è già). Aprendo https://metsummerteam26.tuodominio.it
+   deve comparire la landing.
+
+4. Attivare il certificato HTTPS (SSL) per il sottodominio (Let's Encrypt
+   è incluso nella maggior parte degli hosting). Serve anche perché la
+   pagina richiama risorse esterne in https.
+
+5. L'area organizzatori è raggiungibile da:
+   https://metsummerteam26.tuodominio.it/organizzatori.html
+   (oltre che dal pulsante "Login Organizzatori" in alto nella landing).
+
+
+------------------------------------------------------------
+3) REQUISITI / NOTE TECNICHE
+------------------------------------------------------------
+- Connessione Internet lato visitatore: la pagina carica da CDN pubbliche
+  i font (Google Fonts) e le librerie React/Babel (unpkg). Sono CDN molto
+  diffuse; non serve installare nulla.
+
+- Previsioni meteo: la sezione Agenda/Meteo interroga l'API pubblica
+  open-meteo.com. Funziona da qualsiasi dominio, nessuna chiave richiesta.
+
+- Il file "gallery.json" contiene le foto delle gallerie (Location,
+  Attività, Archivio anni precedenti). DEVE essere caricato e servito
+  insieme agli altri file, altrimenti le gallerie risultano vuote.
+  È stato volutamente nominato senza punto iniziale per evitare che il
+  server lo blocchi. NON rinominarlo.
+
+- Compatibilità: ottimizzato per i browser moderni (Chrome, Safari, Edge,
+  Firefox aggiornati), desktop e mobile.
+
+
+------------------------------------------------------------
+4) RACCOLTA DATI MODULI "CHECK-IN HOTEL" E "CHIEDI AD AMBRA & MAIA"
+   (Google — gratuito) — DA FARE PER VEDERE I DATI DI TUTTI
+------------------------------------------------------------
+I due moduli del sito (registrazione/check-in e richieste) inviano i dati
+a un Foglio Google condiviso, così CHIUNQUE acceda all'Area Organizzatori
+(da qualsiasi dispositivo) vede tutto. Il sistema è già pronto nel codice:
+basta collegarlo, gratis, con un account Google.
+
+➤ Segui la guida nel file "ISTRUZIONI GOOGLE.txt" (≈10 minuti):
+   - crei un Foglio Google e incolli il codice "google-apps-script.gs";
+   - pubblichi lo script come "App web" e copi l'URL che finisce in /exec;
+   - incolli quell'URL e una parola segreta nel file "config.js".
+
+Finché "config.js" non è compilato, il sito funziona lo stesso ma in
+MODALITÀ LOCALE: i dati restano solo nel browser di chi compila e gli
+organizzatori NON li vedono da altri dispositivi. Quindi questo passaggio
+è NECESSARIO per la raccolta reale delle iscrizioni.
+
+(In alternativa al sistema Google si potrebbe usare un servizio moduli tipo
+Formspree/Web3Forms o un backend dedicato: non necessario, la via Google è
+già integrata e a costo zero.)
+
+
+------------------------------------------------------------
+5) AREA ORGANIZZATORI — ACCESSO
+------------------------------------------------------------
+Pagina:    organizzatori.html
+Utente:    Ambraemaia
+Password:  Test!
+
+NOTA DI SICUREZZA: queste credenziali sono incluse nel codice lato
+pagina e servono solo a "nascondere" la dashboard a un occhio casuale;
+NON costituiscono una protezione reale e sono leggibili da chi ispeziona
+il codice. Non inserire in quest'area dati sensibili senza una vera
+protezione lato server. Si consiglia di cambiare la password prima del
+lancio (file admin.jsx) e/o di proteggere la pagina con autenticazione
+del server (es. password .htaccess).
+
+============================================================

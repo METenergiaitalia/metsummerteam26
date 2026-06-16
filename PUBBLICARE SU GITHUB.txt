@@ -1,0 +1,114 @@
+============================================================
+PUBBLICARE IL SITO SU GITHUB PAGES (gratis, tuo al 100%)
+SummerTeam 2026 — MET Italia
+============================================================
+
+GitHub Pages pubblica gratuitamente siti statici come questo, con HTTPS.
+Ti serve solo un account GitHub. Di seguito il metodo SENZA programmare
+(tutto da browser). In fondo trovi anche il metodo "da terminale" per chi
+preferisce git.
+
+IMPORTANTE PRIMA DI INIZIARE: per avere GitHub Pages gratis il repository
+deve essere PUBBLICO. Questo vuol dire che chiunque potrà leggere il
+codice del sito (vedi la nota privacy in fondo: riguarda token e password).
+
+
+------------------------------------------------------------
+METODO A — DA BROWSER (consigliato, niente programmi)
+------------------------------------------------------------
+1. Crea un account su https://github.com (se non ce l'hai).
+
+2. In alto a destra: "+" ▸ "New repository".
+   - Repository name:  metsummerteam26   (o come preferisci)
+   - Visibilità:       Public
+   - NON aggiungere README/gitignore/licenza (lascia vuoto)
+   - Clicca "Create repository".
+
+3. Nella pagina del repo vuoto, clicca il link
+   "uploading an existing file" (oppure "Add file" ▸ "Upload files").
+
+4. Trascina TUTTO il contenuto di questa cartella (i FILE, non la cartella
+   che li contiene) nell'area di upload:
+   - index.html, organizzatori.html, config.js, gallery.json
+   - tutti i file .css, .jsx, .js
+   - la cartella "assets" (trascinala intera)
+   - il file ".nojekyll"  (vedi nota sotto se non lo vedi)
+   I file di documentazione (LEGGIMI..., ISTRUZIONI GOOGLE.txt,
+   google-apps-script.gs) puoi caricarli o no: non influiscono sul sito.
+
+   ▸ Il file ".nojekyll" è nascosto (inizia con un punto). Se nello zip non
+     compare o il sistema non te lo fa caricare, crealo direttamente su
+     GitHub: "Add file" ▸ "Create new file" ▸ nome esatto  .nojekyll
+     (lascialo vuoto) ▸ "Commit changes". Serve a far servire i file così
+     come sono, senza elaborazioni.
+
+5. In fondo clicca "Commit changes" per confermare il caricamento.
+
+6. Attiva le Pages: nel repo vai su "Settings" (in alto) ▸ "Pages"
+   (menù a sinistra).
+   - Alla voce "Source" scegli "Deploy from a branch".
+   - Branch: "main"  /  cartella: "/(root)"  ▸ "Save".
+
+7. Aspetta 1-2 minuti. Ricarica la pagina "Pages": comparirà l'indirizzo
+   del sito, del tipo:
+       https://TUO-UTENTE.github.io/metsummerteam26/
+   Quello è il tuo sito online. L'area organizzatori sarà:
+       https://TUO-UTENTE.github.io/metsummerteam26/organizzatori.html
+
+FATTO. Il sito è pubblicato e funziona (Google, foglio, email inclusi).
+
+
+------------------------------------------------------------
+COME AGGIORNARE IL SITO IN FUTURO
+------------------------------------------------------------
+Per cambiare un file (es. config.js o una foto): nel repo apri il file ▸
+icona matita ✏️ ▸ modifica ▸ "Commit changes". Oppure ricarica il file
+aggiornato con "Add file" ▸ "Upload files" (sovrascrive). Le modifiche
+sono online dopo ~1 minuto.
+
+
+------------------------------------------------------------
+NOME DEL SITO / DOMINIO
+------------------------------------------------------------
+- Se vuoi l'indirizzo alla radice (https://TUO-UTENTE.github.io/ senza
+  sottocartella) chiama il repository ESATTAMENTE:  TUO-UTENTE.github.io
+- Se in futuro vuoi un dominio tuo (es. summerteam.miodominio.it) si può
+  collegare gratis: Settings ▸ Pages ▸ "Custom domain".
+
+
+------------------------------------------------------------
+METODO B — DA TERMINALE (per chi usa git)
+------------------------------------------------------------
+  cd <questa-cartella>
+  git init
+  git add -A
+  git commit -m "SummerTeam 2026 site"
+  git branch -M main
+  git remote add origin https://github.com/TUO-UTENTE/metsummerteam26.git
+  git push -u origin main
+Poi attiva Pages come al punto 6 (Settings ▸ Pages ▸ branch main / root).
+
+
+------------------------------------------------------------
+⚠️ NOTA PRIVACY E SICUREZZA (leggere)
+------------------------------------------------------------
+Con repository PUBBLICO, il codice del sito è leggibile da chiunque, quindi
+sono visibili anche:
+  - in config.js: l'URL del backend Google e il "token" (summerteam);
+  - in admin.jsx: utente e password dell'area organizzatori.
+Questo già accade per qualsiasi sito statico (il codice è scaricabile dal
+browser), ma su un repo pubblico è ancora più facile da trovare.
+
+Conseguenza concreta: una persona esperta che trovi il repo potrebbe
+leggere l'elenco iscritti (nomi, date di nascita, n. carta d'identità) o
+inviare iscrizioni finte. Per un evento interno spesso è un rischio
+accettato, ma vista la presenza di dati personali ti consigliamo almeno di:
+  - CAMBIARE la password dell'area organizzatori (file admin.jsx, riga
+    con  const CRED = { user: '...', pass: '...' };  ) prima del lancio;
+  - cambiare il "token" con una parola meno ovvia (in config.js E nello
+    script Google, devono restare identici);
+  - non diffondere pubblicamente l'indirizzo dell'area organizzatori.
+Per una protezione vera servirebbe un backend con login (non gratuito su
+GitHub Pages, che ospita solo siti statici): possiamo prepararlo se serve.
+
+============================================================

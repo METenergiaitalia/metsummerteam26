@@ -1,0 +1,133 @@
+============================================================
+SUMMERTEAM 2026 — COLLEGAMENTO A GOOGLE (raccolta dati a costo zero)
+============================================================
+
+OBIETTIVO
+Far sì che le iscrizioni ("Check-In Hotel") e le richieste ("Chiedi ad
+Ambra & Maia") inviate dal sito finiscano in un Foglio Google condiviso,
+così CHIUNQUE acceda all'Area Organizzatori (da qualsiasi dispositivo)
+veda tutto. Tutto gratis con un account Google.
+
+Tempo necessario: ~10 minuti. Non serve saper programmare: si fa
+copia-incolla.
+
+
+------------------------------------------------------------
+PARTE A — CREARE IL FOGLIO E LO SCRIPT GOOGLE
+------------------------------------------------------------
+1. Vai su https://sheets.google.com e crea un NUOVO foglio vuoto.
+   Chiamalo ad es. "SummerTeam 2026 — Dati". (Le schede "Iscritti" e
+   "Richieste" verranno create automaticamente al primo invio.)
+
+2. Nel foglio, menu in alto: Estensioni ▸ Apps Script.
+   Si apre l'editor dello script in una nuova scheda.
+
+3. Cancella tutto il codice di esempio che vedi, poi apri il file
+   "google-apps-script.gs" (te l'abbiamo fornito), COPIA TUTTO il suo
+   contenuto e INCOLLALO nell'editor.
+
+4. In cima al codice trovi la riga:
+       const TOKEN = 'CAMBIA-QUESTA-PAROLA-SEGRETA';
+   Sostituisci la parola con una tua parola segreta (lettere/numeri,
+   niente spazi). ANNOTALA: ti servirà identica nel punto C.
+   Esempio:  const TOKEN = 'metST26chiave';
+
+   Subito sotto trovi anche:
+       const NOTIFY = ['ambra.demi@met.com', 'maia.ingaramo@met.com'];
+   Sono gli indirizzi che ricevono una EMAIL di avviso a ogni nuova
+   iscrizione o richiesta. Sono già impostati su Ambra e Maia: modificali
+   solo se vuoi cambiarli (o metti [] per disattivare gli avvisi).
+
+5. Salva (icona dischetto o Ctrl/Cmd+S).
+
+
+------------------------------------------------------------
+PARTE B — PUBBLICARE LO SCRIPT COME "APP WEB"
+------------------------------------------------------------
+6. In alto a destra nell'editor Apps Script: Distribuisci ▸ Nuovo
+   deployment  (in inglese: Deploy ▸ New deployment).
+
+7. Clicca l'ingranaggio "Seleziona tipo" e scegli "App web"
+   (Web app).
+
+8. Imposta:
+   - Descrizione:        SummerTeam backend (a piacere)
+   - Esegui come:        Me (il tuo account)
+   - Chi può accedere:   Chiunque   (IMPORTANTE: "Chiunque", non
+                         "Chiunque con un account Google")
+
+9. Clicca "Distribuisci". Google chiederà di autorizzare lo script:
+   - Scegli il tuo account Google.
+   - Verranno richiesti i permessi per gestire il foglio e per INVIARE
+     EMAIL a tuo nome (servono per gli avvisi automatici): consenti.
+   - Se compare "Google non ha verificato l'app": clicca "Avanzate" ▸
+     "Vai a … (non sicuro)" ▸ "Consenti". (È normale: è il TUO script.)
+
+10. A fine procedura compare un "URL app web" che termina con /exec.
+    COPIALO: è l'indirizzo del backend. Esempio:
+    https://script.google.com/macros/s/AKfy.....X/exec
+
+
+------------------------------------------------------------
+PARTE C — COLLEGARE IL SITO (file config.js)
+------------------------------------------------------------
+11. Apri il file "config.js" (è tra i file del sito) e compila i due
+    valori:
+        endpoint: 'INCOLLA-QUI-L-URL-CHE-FINISCE-CON-/exec',
+        token:    'LA-STESSA-PAROLA-SEGRETA-DEL-PUNTO-4'
+
+    Esempio:
+        endpoint: 'https://script.google.com/macros/s/AKfy...X/exec',
+        token:    'metST26chiave'
+
+12. Salva config.js e caricalo (o ricaricalo) sul sottodominio insieme
+    agli altri file. Fatto!
+
+
+------------------------------------------------------------
+COME FUNZIONA / VERIFICA
+------------------------------------------------------------
+- Apri la landing e invia una registrazione di prova dal "Check-In Hotel".
+- Apri l'Area Organizzatori (organizzatori.html), accedi, e nella barra
+  in alto deve comparire "Connesso al foglio Google · N iscritti".
+  La registrazione di prova compare nell'elenco e anche nel Foglio Google.
+- Il pulsante "Aggiorna" ricarica i dati; la dashboard si aggiorna anche
+  da sola ogni 30 secondi.
+- Puoi sempre aprire il Foglio Google per vedere/filtrare/esportare i dati
+  a mano: è la "cassaforte" dei dati.
+
+NOTA: lo stato "letto/da leggere" e l'eliminazione di una richiesta
+nell'area organizzatori restano sul dispositivo di chi consulta (non
+modificano il Foglio). Il Foglio resta l'archivio completo.
+
+NOTIFICHE EMAIL: a ogni nuova iscrizione/richiesta, gli indirizzi indicati
+in NOTIFY (Ambra e Maia) ricevono un'email di avviso con il riepilogo.
+Per le richieste, basta usare "Rispondi" nell'email per scrivere alla
+persona. (Limite Google gratuito: ~100 email/giorno, più che sufficiente.)
+
+
+------------------------------------------------------------
+SE MODIFICHI LO SCRIPT IN FUTURO
+------------------------------------------------------------
+Ogni volta che cambi il codice in Apps Script devi ripubblicare:
+Distribuisci ▸ Gestisci deployment ▸ (matita/Modifica) ▸ Versione:
+"Nuova versione" ▸ Distribuisci. L'URL /exec resta lo stesso.
+
+
+------------------------------------------------------------
+NOTA SU PRIVACY E SICUREZZA (importante)
+------------------------------------------------------------
+Il sito è statico: la "parola segreta" (token) e la password dell'area
+organizzatori sono comunque presenti nel codice della pagina e, con un
+po' di competenza, sono individuabili. Servono a tenere i dati lontani da
+occhi casuali, NON sono una protezione forte.
+Dato che si raccolgono dati personali (date di nascita, numeri di carta
+d'identità) consigliamo di:
+  - non pubblicare in giro l'URL /exec del backend;
+  - cambiare la password dell'area organizzatori prima del lancio
+    (file admin.jsx) ed eventualmente proteggere organizzatori.html con
+    una password lato server (es. .htaccess);
+  - per una protezione robusta serve un backend con vera autenticazione
+    (fuori dal "costo zero"): possiamo prepararlo se in futuro serve.
+
+============================================================
