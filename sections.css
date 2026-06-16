@@ -95,7 +95,7 @@
 .sec-activity .kicker::before { background: var(--moss); }
 .sec-activity .section-title { color: var(--cream); }
 .sec-activity .section-intro { color: oklch(0.86 0.035 195); }
-.act-facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 46px 0; }
+.act-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 46px 0; }
 .act-fact { background: var(--paper); border-color: var(--line); padding: 22px; display: flex; flex-direction: column; gap: 6px; }
 .act-ic { color: var(--accent); }
 .act-lab { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); margin-top: 4px; }
@@ -332,15 +332,18 @@
 @media (max-width: 960px) {
   .reg-grid, .loc-grid, .act-grid, .sup-grid { grid-template-columns: 1fr; }
   .reg-admin { position: static; }
-  .act-facts { grid-template-columns: repeat(2, 1fr); }
+  .act-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .loc-gallery, .past-grid { grid-template-columns: repeat(2, 1fr); }
   .act-gallery { grid-template-areas: "a a" "b c"; }
 }
 @media (max-width: 560px) {
   .field-row { flex-direction: column; gap: 0; }
-  .act-facts { grid-template-columns: 1fr 1fr; }
-  .loc-gallery { grid-template-columns: 1fr 1fr; }
+  .act-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .loc-gallery { grid-template-columns: repeat(2, 1fr); }
   .agenda-head { align-items: flex-start; }
-  .tl-item { grid-template-columns: 60px 24px 1fr; }
-  .timeline::before { left: 72px; }
+  /* timeline impilata: orario come etichetta sopra la scheda */
+  .tl-item { grid-template-columns: 1fr; margin-bottom: 14px; }
+  .timeline::before { display: none; }
+  .tl-dot { display: none; }
+  .tl-time { text-align: left; padding: 0 0 6px; font-size: 0.85rem; }
 }

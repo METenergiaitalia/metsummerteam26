@@ -86,7 +86,7 @@
 .hero-occhiello .dot { color: var(--green); opacity: 0.9; }
 
 .hero-title {
-  font-size: clamp(3rem, 11vw, 8.4rem);
+  font-size: clamp(2.5rem, 11vw, 8.4rem);
   font-weight: 700;
   letter-spacing: -0.035em;
   margin: 26px 0 0;
@@ -173,6 +173,9 @@
 }
 @keyframes scrolldot { 0% { opacity: 0; top: 8px; } 40% { opacity: 1; } 80% { opacity: 0; top: 22px; } 100% { opacity: 0; } }
 
+@media (max-width: 700px) {
+  .hero-occhiello { flex-wrap: wrap; white-space: normal; row-gap: 4px; }
+}
 @media (max-width: 620px) {
   .hero-meta { flex-direction: column; align-items: flex-start; gap: 20px; }
   .cd-cell { min-width: 48px; padding: 7px 9px; }

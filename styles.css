@@ -40,8 +40,9 @@
 }
 
 * { box-sizing: border-box; }
+img, video, iframe { max-width: 100%; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: clip; }
 
 body {
   margin: 0;
@@ -52,6 +53,8 @@ body {
   text-rendering: optimizeLegibility;
   font-size: 17px;
   line-height: 1.6;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 h1, h2, h3, h4 {
@@ -69,7 +72,7 @@ a { color: inherit; }
 .wrap {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 0 28px;
+  padding: 0 clamp(18px, 5vw, 28px);
 }
 
 .section {
@@ -216,4 +219,9 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1 !important; transform: none !important; }
   html { scroll-behavior: auto; }
+}
+
+/* su schermi piccolissimi i pulsanti vanno a capo invece di tagliarsi */
+@media (max-width: 420px) {
+  .btn { white-space: normal; text-align: center; }
 }
