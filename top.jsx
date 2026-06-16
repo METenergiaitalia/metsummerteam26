@@ -11,7 +11,7 @@ function Nav() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
   const links = [
-  ['Registrazione', '#registrazione'],
+  ['Check-In', '#registrazione'],
   ['Location', '#location'],
   ['Attività', '#attivita'],
   ['Agenda', '#agenda'],
