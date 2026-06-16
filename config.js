@@ -10,9 +10,9 @@
    ============================================================ */
 window.ST_CONFIG = {
   // 1) URL dell'app web di Apps Script (termina con /exec)
-  endpoint: '',
+  endpoint: 'https://script.google.com/macros/s/AKfycbxDqM0pIoZBEfETDTPzmnUS76D6qN-IVVrlFSIMemE--ZCOzaBJ6n5h3KXqoyBz18xQ/exec',
   // 2) Lo stesso "TOKEN" che hai impostato dentro lo script Google
-  token: ''
+  token: 'summerteam'
 };
 
 window.STBackend = {
