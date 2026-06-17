@@ -153,7 +153,7 @@ function HatPopup() {
     <div className="popup-overlay" onClick={() => setShow(false)}>
       <div className="popup-card" onClick={(e) => e.stopPropagation()}>
         <button className="popup-x" onClick={() => setShow(false)} aria-label="Chiudi"><Icon.close /></button>
-        <div className="popup-icon"><Icon.hat /></div>
+        <div className="popup-icon popup-icon--img"><img src="assets/cappellino-met.png" alt="Cappellino MET" /></div>
         <h3>Ricordati il cappellino MET!</h3>
         <p>Se sei un <em>new joiner</em>, ti verrà consegnato direttamente al Team Building. 🧢☀️</p>
         <button className="btn btn-primary" onClick={() => setShow(false)}>Ok, ricevuto!</button>

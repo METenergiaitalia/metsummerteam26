@@ -27,11 +27,19 @@ function printDoc(title, bodyHTML) {
 
 /* ---- archivio immagini salvate (sidecar, sola lettura) ---- */
 let __imgStorePromise = null;
+// Prova prima 'gallery.json' (nome usato online su GitHub), poi ripiega sul
+// vecchio sidecar '.image-slots.state.json' (ambiente di anteprima/progetto).
+function fetchImgStore() {
+  return fetch('gallery.json', { cache: 'no-store' }).
+  then((r) => r.ok ? r.json() : Promise.reject()).
+  catch(() =>
+  fetch('.image-slots.state.json', { cache: 'no-store' }).
+  then((r) => r.ok ? r.json() : {}).
+  catch(() => ({})));
+}
 function loadImgStore() {
   if (!__imgStorePromise) {
-    __imgStorePromise = fetch('gallery.json', { cache: 'no-store' }).
-    then((r) => r.ok ? r.json() : {}).
-    catch(() => ({}));
+    __imgStorePromise = fetchImgStore();
   }
   return __imgStorePromise;
 }
@@ -333,8 +341,7 @@ function PastEvents() {
   // Carica una sola volta l'archivio immagini salvato (sidecar).
   React.useEffect(() => {
     let alive = true;
-    fetch('gallery.json', { cache: 'no-store' }).
-    then((r) => r.ok ? r.json() : {}).
+    fetchImgStore().
     then((j) => {if (alive) setStore(j || {});}).
     catch(() => {if (alive) setStore({});});
     return () => {alive = false;};
