@@ -9,7 +9,7 @@ const AGENDA = [
 { time: '09:00 – 09:45', title: 'Welcome coffee', desc: 'Caffè di benvenuto per iniziare insieme la giornata.', tag: 'Insieme' },
 { time: '09:45 – 12:00', title: 'Town Hall Meeting', desc: 'Seguire la segnaletica presente in hotel per raggiungere la sala.', tag: 'Meeting' },
 { time: '12:00 – 12:45', title: 'Light lunch', desc: 'Pausa pranzo leggera prima della partenza.', tag: 'Food' },
-{ time: '12:45', title: 'Partenza verso Saint-Jacques', desc: 'Trasferimento con le proprie auto fino a Saint-Jacques, punto di partenza del trekking.', tag: 'Logistica' },
+{ time: '12:45', title: 'Partenza verso Saint-Jacques', desc: 'Trasferimento con le proprie auto fino a Park Saint-Jacques, punto di partenza del trekking.', tag: 'Logistica' },
 { time: '13:00 – 14:30', title: 'Trekking fino ai Piani di Verra', desc: 'I partecipanti saranno suddivisi in 3 gruppi per la salita.', tag: 'Outdoor' },
 { time: '14:30', title: 'Arrivo ai Piani di Verra', desc: 'Distribuzione dell’acqua e breve sosta prima della scelta del percorso.', tag: 'Outdoor' }];
 
@@ -84,9 +84,9 @@ const TREK = {
   durata: '5h 00\u2032 circa',
   difficolta: 'E - Escursionistico',
   dislivello: 'Piani di Verra +350 m\nLago Blu +500 m',
-  lunghezza: '7,0 km',
-  portare: ['Acqua (1,5 L)', 'Snack & barrette', 'K-way / giacca antivento', 'Crema solare e cappellino MET', 'Piccolo zaino'],
-  indossare: ['Scarponcini da trekking', 'Abbigliamento a strati', 'Calze tecniche', 'Occhiali da sole']
+  lunghezza: 'Piani di Verra · A/R 6 km\nLago Blu · A/R 9 km',
+  portare: ['Bottiglietta acqua o thermos/borraccia (alle fontane dei Piani di Verra troveremo acqua)', 'Snack (forniti da noi a tutti)', 'K-way / giacca antivento', 'Zainetto', 'Crema solare', 'Maglietta di ricambio', 'Bastoncini (facoltativi ma consigliati)'],
+  indossare: ['Scarpe da trekking con buona suola (Vibram)', 'Abbigliamento a strati', 'Occhiali da sole', 'Cappellino MET']
 };
 
 /* ---------- Fillable image slot (user drops/clicks to add photo) ---------- */

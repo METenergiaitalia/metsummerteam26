@@ -11,7 +11,6 @@ function Nav() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
   const links = [
-  ['', '#registrazione'],
   ['Location', '#location'],
   ['Attività', '#attivita'],
   ['Agenda', '#agenda'],
@@ -23,7 +22,7 @@ function Nav() {
       <div className="wrap nav-inner">
         <div className="nav-left">
           <a href="#top" className="brand"><img className="brand-logo" src="assets/met-logo.jpg" alt="MET Italia" /></a>
-          <a href="organizzatori.html" className="nav-login"><Icon.lock /> Login Organizzatori</a>
+          <a href="Area Organizzatori.html" className="nav-login"><Icon.lock /> Login Organizzatori</a>
         </div>
         <nav className="nav-links">
           {links.map(([t, h]) => <a key={h} href={h}>{t}</a>)}
@@ -37,7 +36,7 @@ function Nav() {
       <div className="nav-mobile">
           {links.map(([t, h]) => <a key={h} href={h} onClick={() => setOpen(false)}>{t}</a>)}
           <a href="#registrazione" className="btn btn-accent" onClick={() => setOpen(false)}>Registrati</a>
-          <a href="organizzatori.html" className="nav-mobile-login"><Icon.lock /> Login Organizzatori</a>
+          <a href="Area Organizzatori.html" className="nav-mobile-login"><Icon.lock /> Login Organizzatori</a>
         </div>
       }
     </header>);

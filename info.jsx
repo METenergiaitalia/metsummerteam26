@@ -29,7 +29,7 @@ function printDoc(title, bodyHTML) {
 let __imgStorePromise = null;
 function loadImgStore() {
   if (!__imgStorePromise) {
-    __imgStorePromise = fetch('gallery.json', { cache: 'no-store' }).
+    __imgStorePromise = fetch('.image-slots.state.json', { cache: 'no-store' }).
     then((r) => r.ok ? r.json() : {}).
     catch(() => ({}));
   }
@@ -128,7 +128,7 @@ function Activity() {
           <div className="act-fact card" key={f.lab}>
               <span className="act-ic">{f.ic()}</span>
               <span className="act-lab">{f.lab}</span>
-              <span className="act-val">{f.val}</span>
+              <span className={`act-val${String(f.val).includes('\n') ? ' act-val--multi' : ''}`}>{f.val}</span>
             </div>
           )}
         </div>
@@ -333,7 +333,7 @@ function PastEvents() {
   // Carica una sola volta l'archivio immagini salvato (sidecar).
   React.useEffect(() => {
     let alive = true;
-    fetch('gallery.json', { cache: 'no-store' }).
+    fetch('.image-slots.state.json', { cache: 'no-store' }).
     then((r) => r.ok ? r.json() : {}).
     then((j) => {if (alive) setStore(j || {});}).
     catch(() => {if (alive) setStore({});});
@@ -359,7 +359,7 @@ function PastEvents() {
       <div className="wrap">
         <div className="reveal">
           <Head kicker="Sezione 06 · Archivio" title="Nelle puntate precedenti…"
-          intro="Ogni anno un nuove mete, nuovi volti e nuove storie da vivere insieme. Un piccolo viaggio tra i SummerTeam che ci hanno portato fin qui." />
+          intro="Ogni anno nuove mete, nuovi volti e nuove storie da vivere insieme. Un piccolo viaggio tra i SummerTeam che ci hanno portato fin qui." />
         </div>
         <div className="past-grid reveal">
           {PAST_EVENTS.map((e, i) => {
