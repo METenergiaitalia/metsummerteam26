@@ -29,7 +29,7 @@ function printDoc(title, bodyHTML) {
 let __imgStorePromise = null;
 function loadImgStore() {
   if (!__imgStorePromise) {
-    __imgStorePromise = fetch('.image-slots.state.json', { cache: 'no-store' }).
+    __imgStorePromise = fetch('gallery.json', { cache: 'no-store' }).
     then((r) => r.ok ? r.json() : {}).
     catch(() => ({}));
   }
@@ -333,7 +333,7 @@ function PastEvents() {
   // Carica una sola volta l'archivio immagini salvato (sidecar).
   React.useEffect(() => {
     let alive = true;
-    fetch('.image-slots.state.json', { cache: 'no-store' }).
+    fetch('gallery.json', { cache: 'no-store' }).
     then((r) => r.ok ? r.json() : {}).
     then((j) => {if (alive) setStore(j || {});}).
     catch(() => {if (alive) setStore({});});
