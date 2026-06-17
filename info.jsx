@@ -359,7 +359,7 @@ function PastEvents() {
       <div className="wrap">
         <div className="reveal">
           <Head kicker="Sezione 06 · Archivio" title="Nelle puntate precedenti…"
-          intro="Ogni anno un posto nuovo, le stesse persone, sempre più affiatate. Un piccolo viaggio tra i SummerTeam che ci hanno portato fin qui." />
+          intro="Ogni anno un nuove mete, nuovi volti e nuove storie da vivere insieme. Un piccolo viaggio tra i SummerTeam che ci hanno portato fin qui." />
         </div>
         <div className="past-grid reveal">
           {PAST_EVENTS.map((e, i) => {
